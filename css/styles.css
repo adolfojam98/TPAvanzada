@@ -1,0 +1,100 @@
+#div-form{
+	width: 30%;
+	margin: 0 auto;
+	margin-bottom: 30px;
+	margin-top: 20px;
+	padding: 30px;
+	padding-bottom: 25px;
+	box-shadow: 0 0 8px 0px black;
+}
+#div-boton{
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+#div-captcha{
+	margin-top: 15px;
+}
+
+input[type="submit" i]{
+	cursor:pointer;
+	background-color: #2B726C;
+    border: 1px solid #2B726C;
+    border-radius: 4px;
+    color: #fff;
+    justify-content: center;
+    position: static;
+    cursor: pointer;
+	width:120px;
+    height:50px;
+    font-size: 15px;
+    font-family: 'Coming Soon', cursive;
+}
+
+#correcto{
+	width:300px;
+	height:320px;
+	margin:0 auto;
+	text-align: center;
+}
+
+.imgC{
+	position:absolute; 
+	top: 20;
+	left:50%;
+	margin-left: -150px;
+}
+
+.texto{
+	font-family: 'Coming Soon', cursive;
+	color: #2B726C;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+h1{
+	color: #2B726C;
+	font-weight: bold;
+	font-size: 25px;
+	text-align: center;
+	font-family: 'Coming Soon', cursive;
+	text-shadow: 2px 2px 2px #CCC;
+}
+
+
+.inputs{
+	width: 100%;
+	border: 2px solid #aaa;
+	border-radius: 4px;
+	margin: 8px 0;
+	outline: none;
+	padding: 8px;
+	box-sizing: border-box;
+	transition: .3s;
+	font-family: 'Coming Soon', cursive;
+}
+
+
+.inputs:focus{
+	border-color: #2B726C;
+	box-shadow: 0 0 8px 0 #2B726C;
+}
+
+.inputConIcono .inputs{
+	padding-left: 40px;
+}
+.inputConIcono{
+	position: relative;
+}
+.inputConIcono i{
+	position: absolute;
+	left: 0;
+	top: 8px;
+	padding: 9px 8px;
+	color: #aaa; 
+	transition: .3s;
+}
+
+.inputConIcono .inputs:focus + i{
+	color: #2B726C;
+}
+
