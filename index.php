@@ -34,11 +34,11 @@
   <div id="div-form">
     <form action="procesosLogin.php" method="post"><!--Aca empieza todo lo que es el formulario-->
       <div class="inputConIcono">
-        <input class="inputs" type="text" name="email" id="email" placeholder="Usuario" autofocus size="40px" required pattern="A-Za-z0-9">
+        <input class="inputs" type="text" name="email" id="email" placeholder="Usuario" autofocus size="40px" required>
         <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i> 
       </div>
       <div class="inputConIcono">
-        <input class="inputs" type="password" name="password" id="password" placeholder="Contraseña" size="40px" required pattern="A-Za-z0-9">
+        <input class="inputs" type="password" name="password" id="password" placeholder="Contraseña" size="40px" required>
         <i class="fa fa-key fa-lg fa-fw" aria-hidden="true"></i>
       </div>
       <div id="div-captcha" align="center">

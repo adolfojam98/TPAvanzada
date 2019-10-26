@@ -23,36 +23,7 @@
 	$context  = stream_context_create($options);
 	$verify = file_get_contents($url, false, $context);
 	$captcha_success = json_decode($verify);
-
-	?>
-
-<!DOCTYPE html>
-<html>
-	<head>
-   		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-   		<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.js"></script>
-   		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.0/sweetalert2.css"/>
-	</head>
-	<body>
-		<script type="text/javascript"> 
-			function alerta(texto){
-				swal({
-  					title: "Error",
-  					text: texto,
-  					type: "error",
-  					icon: "error",
-  					confirmButtonText: "Aceptar",
-  					allowOutsideClick: true
-				}).then(function(){
-					history.back();
-					//window.location.href = "index.php"
-				});
-			}
- 		</script>
-	</body>
-</html>
-
-<?php
+	
 	if ($captcha_success->success) {
 		if(ctype_alnum($email)  && ctype_alnum($password)){
     		if ($email == "fcytuader" && $password == "programacionavanzada"){
@@ -62,12 +33,19 @@
     			header("Location:inicio.php");
     		}
     		else{
-    			echo "<script> alerta('Usuario y/o contraseña incorrectos');</script>";
+				$_SESSION["validate"] = false;
+				$_SESSION["incorrecto"] = true;
+				header("Location:inicioFail.php");
     		}
     	}else{
-        	echo "<script> alerta('Los datos solo pueden contener letras y/o números');</script>";
+			$_SESSION["validate"] = false;
+			$_SESSION["invalid"] = true;
+			header("Location:inicioFail.php");
         }
 	} else {
-		echo "<script>alerta('Debe validar el captcha');</script>";
+
+		$_SESSION["captcha"] = false;
+		$_SESSION["validate"] = false;
+		header("Location:inicioFail.php");
 	}
 ?>
