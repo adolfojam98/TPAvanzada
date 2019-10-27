@@ -48,7 +48,7 @@
         $_SESSION['id']       = $user['id'];
         $_SESSION['nombre']   = $user['nombre'];
         $_SESSION["apellido"] = $user['apellido'];
-        $_SESSION['user']  = $user['usuario'];
+        $_SESSION['user']     = $user['usuario'];
         $_SESSION['validate'] = true;
 
        
@@ -67,22 +67,22 @@
       # Cerramos la conexion
       parent::cerrar();
       header("Location:../view/inicio.php");
+      die();
     }
 
  
  
    //Registro usuario nuevo 
-    public function registroUsuario($nombre,$apellido,$usuario,$contrasenia)
+    public function registroUsuario($name,$last_name,$userr,$pass)
     {
       parent::conectar();
 
-      // $nombre   = parent::filtrar($nombre);
-      // $apellido = parent::filtrar($apellido);
-      // $email    = parent::filtrar($usuario);
-      // $clave    = parent::filtrar($contrasenia);
-
-      $email = $usuario;
-      $clave = $contrasenia;
+      $nombre   = parent::filtrar($name);
+      $apellido = parent::filtrar($last_name);
+      $email    = parent::filtrar($userr);
+      $clave    = parent::filtrar($pass);
+      
+      
       // validar que el correo no exita
       $consulta = "select id from usuario where usuario= '".$email."'";
       
@@ -93,9 +93,13 @@
        //ACA HACE QUE TE SALGA ALGO QUE DIGA QUE EL CORRERO YA EXISTE<-----------------------------
         
       }else{
-
-        $variable =parent::query('insert into usuario(nombre, apellido, usuario, contrasenia) values("'.$nombre.'","'.$apellido.'","'.$usuario.'", MD5("'.$clave.'")');
-         
+            // $a=0;
+            // if($a==0){
+            //   $b ='insert into usuario(nombre,apellido,usuario,contrasenia) values("'.$nombre.'","'.$apellido.'","'.$email.'", MD5("'.$clave.'")';
+            //   echo $b;
+            // }
+        $variable =parent::query('insert into usuario(nombre,apellido,usuario,contrasenia) values ("'.$nombre.'","'.$apellido.'","'.$email.'", MD5("'.$clave.'"))');
+        $this->login($email,$clave);
         
         //REGISTRADO SATISFACTORiAMENTE
 

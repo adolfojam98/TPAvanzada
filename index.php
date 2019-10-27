@@ -1,4 +1,4 @@
 <?php
 
-require "controller/controllerMaster.php";
+header("Location:view/login.php");
 ?>

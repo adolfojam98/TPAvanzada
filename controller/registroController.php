@@ -13,7 +13,7 @@
 
   }else{
 
-    if($contrasenia1 == $contrasenia2){
+    if($contrasenia1 === $contrasenia2){
 
          # Incluimos la clase usuario
         require_once('../model/usuario.php');
@@ -22,7 +22,7 @@
         $user = new Usuario();
 
         # Llamamos al metodo login para validar los datos en la base de datos
-        $user -> registroUsuario($name, $apellido, $usuario,$contrasenia1);
+        $user -> registroUsuario($name, $apellido,$usuario,$contrasenia1);
 
         header("../view/incio.php");
      
