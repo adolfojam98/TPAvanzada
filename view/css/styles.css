@@ -30,6 +30,9 @@ input[type="submit" i]{
     font-family: 'Coming Soon', cursive;
 }
 
+input[type= "submit"]:hover{
+	background-color: aqua;
+}
 #correcto{
 	width:300px;
 	height:320px;
@@ -97,4 +100,5 @@ h1{
 .inputConIcono .inputs:focus + i{
 	color: #2B726C;
 }
+
 

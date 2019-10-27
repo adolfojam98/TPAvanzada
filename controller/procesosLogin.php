@@ -23,29 +23,32 @@
 	$context  = stream_context_create($options);
 	$verify = file_get_contents($url, false, $context);
 	$captcha_success = json_decode($verify);
-	
+
+
+	$_SESSION["error"] = "";
+
 	if ($captcha_success->success) {
 		if(ctype_alnum($email)  && ctype_alnum($password)){
     		if ($email == "fcytuader" && $password == "programacionavanzada"){
     			$_SESSION["user"] = $email;
     			$_SESSION["pass"] = $password;
     			$_SESSION["validate"] = true;
-    			header("Location:inicio.php");
+    			header("Location:../view/inicio.php");
     		}
     		else{
 				$_SESSION["validate"] = false;
-				$_SESSION["incorrecto"] = true;
-				header("Location:inicioFail.php");
+				$_SESSION["error"] = "incorrecto";
+				header("Location:../view/inicioFail.php");
     		}
     	}else{
 			$_SESSION["validate"] = false;
-			$_SESSION["invalid"] = true;
-			header("Location:inicioFail.php");
+			$_SESSION["error"] = "malEntrada";
+			header("Location:../view/inicioFail.php");
         }
 	} else {
 
 		$_SESSION["captcha"] = false;
-		$_SESSION["validate"] = false;
-		header("Location:inicioFail.php");
+		$_SESSION["error"] = "malCaptcha";
+		header("Location:../view/inicioFail.php");
 	}
 ?>

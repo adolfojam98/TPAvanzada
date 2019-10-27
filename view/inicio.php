@@ -3,10 +3,10 @@
 
     if(isset($_SESSION["validate"])){
         if($_SESSION["validate"] == false){
-            header("Location:index.php");
+            header("Location:login.php");
         }
     }else{
-        header("Location:index.php");
+        header("Location:login.php");
     } 
 ?>
 
@@ -35,7 +35,7 @@
         <img src="imagenes/correcto.png" width="300" height="300" class="imgC" />
     </div>
     <div id="div-boton" align="center">
-        <input type="submit" value="Cerrar sesión" onclick="location.href='cerrarSesion.php'">
+        <input type="submit" value="Cerrar sesión" onclick="location.href='../controller/cerrarSesion.php'">
     </div>
     <footer>
         <?php

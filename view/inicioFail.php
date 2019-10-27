@@ -40,14 +40,14 @@ session_start();
 </html>
 
 <?php
-if(isset($_SESSION["incorrecto"]) && $_SESSION["incorrecto"] == true){
-    echo "<script> alerta('Usuario y/o contraseña incorrectos');</script>";
+if($_SESSION["error"] == "incorrecto"){
+	echo "<script> alerta('Usuario y/o contraseña incorrectos');</script>";
 }
-elseif(isset($_SESSION["invalid"]) && $_SESSION["invalid"] == true)
+elseif($_SESSION["error"] == "malEntrada"){
     echo "<script> alerta('Los datos solo pueden contener letras y/o números');</script>";
-elseif(isset($_SESSION["captcha"]) && $_SESSION["captcha"] == false)
+}elseif($_SESSION["error"] == "malCaptcha"){
     echo "<script>alerta('Debe validar el captcha');</script>";
-
+}
 
 
 
