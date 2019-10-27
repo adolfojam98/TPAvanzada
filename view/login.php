@@ -3,7 +3,7 @@
   $_SESSION["captcha"] = false;
   if(isset($_SESSION["validate"])){
     if($_SESSION["validate"]== true){
-        header("Location:view/inicio.php");
+        header("Location:inicio.php");
     }
   }
 ?>
@@ -48,6 +48,10 @@
         <input type="submit" value="Enviar">
       </div>
     </form>  
+  </div>
+
+  <div>
+    <a href="registro.php">Registrarse</a>
   </div>
   <footer>
     <?php

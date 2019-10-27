@@ -29,17 +29,23 @@
 
 	if ($captcha_success->success) {
 		if(ctype_alnum($email)  && ctype_alnum($password)){
-    		if ($email == "fcytuader" && $password == "programacionavanzada"){
-    			$_SESSION["user"] = $email;
-    			$_SESSION["pass"] = $password;
-    			$_SESSION["validate"] = true;
-    			header("Location:../view/inicio.php");
-    		}
-    		else{
-				$_SESSION["validate"] = false;
-				$_SESSION["error"] = "incorrecto";
-				header("Location:../view/inicioFail.php");
-    		}
+			require_once('../model/usuario.php');
+			$user = new Usuario();
+			$user -> login($email, $password);
+
+		
+
+    		// if ($email == "fcytuader" && $password == "programacionavanzada"){
+    		// 	$_SESSION["user"] = $email;
+    		// 	$_SESSION["pass"] = $password;
+    		// 	$_SESSION["validate"] = true;
+    		// 	header("Location:../view/inicio.php");
+    		// }
+    		// else{
+			// 	$_SESSION["validate"] = false;
+			// 	$_SESSION["error"] = "incorrecto";
+			// 	header("Location:../view/inicioFail.php");
+    		// }
     	}else{
 			$_SESSION["validate"] = false;
 			$_SESSION["error"] = "malEntrada";
