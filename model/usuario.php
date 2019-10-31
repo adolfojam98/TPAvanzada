@@ -23,12 +23,8 @@
 
       // traemos el id y el nombre de la tabla usuarios donde el usuario sea igual al usuario ingresado y ademas la clave sea igual a la ingresada para ese usuario.
       $consulta = 'select id, nombre, apellido, usuario  from usuario where usuario="'.$user.'" and contrasenia= MD5("'.$clave.'")';
-      /*
-        Verificamos si el usuario existe, la funcion verificarRegistros
-        retorna el número de filas afectadas, en otras palabras si el
-        usuario existe retornara 1 de lo contrario retornara 0
-      */
-
+     
+      //retorna el numero de filas afectadas
       $verificar_usuario = parent::verificarRegistros($consulta);
 
       // si la consulta es mayor a 0 el usuario existe
@@ -55,7 +51,7 @@
        
 
          }else{
-        // El usuario y la clave son incorrectos
+        
         
 				$_SESSION["validate"] = false;
 			  $_SESSION["error"] = "incorrecto";
@@ -76,7 +72,7 @@
     public function registroUsuario($name,$last_name,$userr,$pass)
     {
       parent::conectar();
-
+      //filtramos las variables para agrear a la bdd
       $nombre   = parent::filtrar($name);
       $apellido = parent::filtrar($last_name);
       $email    = parent::filtrar($userr);
@@ -90,7 +86,7 @@
 
 
       if($verificarCorreo > 0){
-       //ACA HACE QUE TE SALGA ALGO QUE DIGA QUE EL CORRERO YA EXISTE<-----------------------------
+      // TODO: "indicar que el correo que quiere registrar ya existe";
         
       }else{
             // $a=0;
@@ -98,8 +94,17 @@
             //   $b ='insert into usuario(nombre,apellido,usuario,contrasenia) values("'.$nombre.'","'.$apellido.'","'.$email.'", MD5("'.$clave.'")';
             //   echo $b;
             // }
-        $variable =parent::query('insert into usuario(nombre,apellido,usuario,contrasenia) values ("'.$nombre.'","'.$apellido.'","'.$email.'", MD5("'.$clave.'"))');
-        $this->login($email,$clave);
+           
+            //Valida la foto(si es que se inserto alguna) y la lleva al directorio, devuelve la ruta en donde se aloja
+            $rutaFoto = validarFoto($email);
+         
+            
+            
+              //insercion de los datos, aca se 
+            parent::query('insert into usuario(nombre,apellido,usuario,contrasenia, fotoPerfil) values ("'.$nombre.'","'.$apellido.'","'.$email.'", MD5("'.$clave.'"),"'.$rutaFoto.'")');
+            //Se podrai hacer una validacion aca pero alta paja
+ 
+            $this->login($email,$clave);
         
         //REGISTRADO SATISFACTORiAMENTE
 
@@ -111,6 +116,44 @@
       parent::cerrar();
     }
 
+   
+
+  }
+
+  function validarFoto($email){
+    //areglo de extensiones validas
+    $archivos_disp_ar = array('jpg', 'jpeg', 'gif', 'png', 'tif', 'tiff', 'bmp');
+     //Valida si hubo una insercion de foto     
+    if(isset($_FILES['FotoPerfil'])){
+          //saca el nombre de la foto
+          $nombreFotoPerfil = $_FILES["fotoPerfil"]["name"];
+         
+          //saca la extension
+          $nombreFotoPerfil = explode('.',$nombreFotoPerfil);
+          $cuenta_arr_nombre = count($nombreFotoPerfil);
+          $extension = strtolower($nombreFotoPerfil[--$cuenta_arr_nombre]);
+         
+          
+          //Validamos la extension
+          if(!in_array($extension, $archivos_disp_ar)){
+          }else{
+           //TODO: "El archivo subido no es valido";
+           }
+
+           //saca donde esta almacenado temporalmente
+          $archivo = $_FILES['fotoPerfil']['tmp_name'];
+          //Generamos la ruta en donde se almacena
+          $rutaFoto = '../view/imagenes/fotoPerfiles';
+      
+          $rutaFoto = $rutaFoto .'/'. $email . '_foto.' . $extension;
+          move_uploaded_file($archivo,$rutaFoto); 
+          }else{
+            //Asigna el valor por defecto de foto del usuario
+            $rutaFoto = '../view/imagenes/user-default.png';
+            
+          }
+
+          return $rutaFoto;
   }
 
 

@@ -37,6 +37,10 @@
     <div id="div-boton" align="center">
         <input type="submit" value="Cerrar sesión" onclick="location.href='../controller/cerrarSesion.php'">
     </div>
+    <!-- TODO: hacer lindo este link -->
+    <a href="tablaUsuarios.php">IR A USUARIOS</a>
+    <div>
+    </div>
     <footer>
         <?php
             require "html/footer.html"; //Esto es para llamar a la fotito de abajo

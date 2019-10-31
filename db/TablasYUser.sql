@@ -35,7 +35,9 @@ CREATE TABLE `usuario` (
   `nombre` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
   `apellido` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
   `usuario` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `contrasenia` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL
+  `contrasenia` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `fotoPerfil` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -47,8 +49,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `nombre`, `apellido`, `usuario`, `contrasenia`) VALUES
-(1, 'jose', 'perez', 'pepe', 'carlos'),
-(2, 'fcyt', 'uader', 'fcytuader', '3bccc90aa05755f993fe5db36e07c2f6');
+
+(1, 'fcyt', 'uader', 'fcytuader', '3bccc90aa05755f993fe5db36e07c2f6', '../view/imagenes/user-default.jpg');
 
 --
 -- Índices para tablas volcadas

@@ -6,10 +6,16 @@
   $contrasenia1  = $_POST["contrasenia1"];
   $contrasenia2  = $_POST["contrasenia2"];
 
+
+   
+    
+
+  //si alguno de los campos esta vacio
   if(empty($usuario) || empty($contrasenia1) || empty($contrasenia2))
   {
 
-    echo 'error_1'; // AGREGAR ALERTA O ALGO QUE LE DIGA AL USUARIO QUE INGRESE TODOS LOS CAMPOS
+    //TODO: indicar que algun/os de los campos estn vacios
+    
 
   }else{
 
@@ -28,7 +34,7 @@
      
 
     }else{
-      //AGREGAR ALGO QUE INDIQUE QUE LAS CONTRASEÑAS NO COINCIDEN
+     // TODO: "indicar que las contraseñas ingresadas no coinciden";
     }
 
   }
@@ -36,4 +42,6 @@
 
 
 
-?>
+// ?>
+
+

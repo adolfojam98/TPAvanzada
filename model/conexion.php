@@ -13,23 +13,23 @@
         private $db = 'bddtp';
 
 
-        # Funcion que permite conectarnos a la base de datos
+        // Funcion que permite conectarnos a la base de datos
         public function conectar()
         {
-            # Creamos un objeto de conexion MySQLI
+            // Creamos un objeto de conexion MySQLI
             $this->mysqli = new mysqli($this->server, $this->usuario, $this->clave, $this->db);
 
-            # Validamos si existe un error al conectarnos
+            //Validamos si existe un error al conectarnos
             if($this->mysqli->connect_errno)
             {
-                # Imprimimos el error
+                //TODO: ver si es posible hacer alguna pagina(404 not found ahre)
                 echo 'Fallo al conectarse con MySQL: ' . $this->mysqli->connect_error;
             }
 
         }
 
 
-        # Function que retorna un objeto de MySQL
+        //Function que retorna un objeto de MySQL
         public function query($consulta)
         {
           #mysqli_query Realiza una consulta a la base de datos
@@ -37,7 +37,7 @@
         }
 
 
-        # Funcion que retorna el numero de filas afectadas por una consulta sql
+        //Funcion que retorna el numero de filas afectadas por una consulta sql
         public function verificarRegistros($consulta)
         {
             # mysqli_num_rows: Obtiene el número de filas de un resultado de una consulta

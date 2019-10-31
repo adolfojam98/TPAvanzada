@@ -12,7 +12,7 @@
 
   // isset verifica si existe una variable o eso creo xd
   if(isset($_SESSION['id'])){
-    header('location: controller/redirec.php');
+    header('location:inicio.php');
   }
 
 ?>
@@ -24,18 +24,19 @@
     <meta charset="utf-8">
     <title>Register</title>
 
-
+<!-- TODO: hacer el style de registro -->
 
   </head>
   <body>
 
-  <form action="../controller/registroController.php" method="post">
+  <form action="../controller/registroController.php" method="post" enctype ="multipart/form-data" >
   
   <input type="text" name="nombre" id="nombre" placeholder="Ingrese nombre">
   <input type="text" name="apellido" id="apellido" placeholder="Ingrese apellido">
   <input type="text" name="usuario" id="usuario" placeholder="ingrese nombre de usuario">
   <input type="password" name="contrasenia1" id="contrasenia1" placeholder="Ingrese contraseña"> 
   <input type="password" name="contrasenia2" id="contrasenia2" placeholder="Ingrese nuevamente contraseña">
+  <input type="file" name="fotoPerfil" id="fotoPerfil">
   <input type="submit" value="Enviar">
 
  </form>
