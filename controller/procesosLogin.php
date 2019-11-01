@@ -7,7 +7,7 @@
     $_SESSION["validate"] = false;	  
 	
 	$recaptcha = $_POST["g-recaptcha-response"];
- 
+ //Proceso de validacion del captcha
 	$url = 'https://www.google.com/recaptcha/api/siteverify';
 	$data = array(
 		'secret' =>$secret ,
@@ -46,7 +46,8 @@
 			// 	$_SESSION["error"] = "incorrecto";
 			// 	header("Location:../view/inicioFail.php");
     		// }
-    	}else{
+		
+		}else{
 			$_SESSION["validate"] = false;
 			$_SESSION["error"] = "malEntrada";
 			header("Location:../view/inicioFail.php");

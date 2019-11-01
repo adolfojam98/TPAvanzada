@@ -23,10 +23,15 @@
     foreach ($listaUsuarios as $valor) {
     ?>  
     <tr>
-    <td><?php echo $valor['id']   ?> </td>
-    <td><?php echo $valor['nombre']   ?> </td>
-    <td><?php echo $valor['apellido']   ?> </td>
+    
+    <td><?php echo $valor['nombre']    ?> </td>
+    <td><?php echo $valor['apellido']  ?> </td>
     <td><?php echo $valor['usuario']   ?> </td>
+    <!-- location.('mostrarMascotas.php?id_usuario="" -->
+    <!-- Arma el link para qeu pase los parametros por el metodo -->
+    <?php $id = $valor["id"];
+    ?>
+    <input type="button" value="Inicio" onclick="window.location = 'tablaMascotas.php?id=<?php echo $id;?>'"/>
     </tr>
 
 <?php } ?>

@@ -39,6 +39,7 @@
     </div>
     <!-- TODO: hacer lindo este link -->
     <a href="tablaUsuarios.php">IR A USUARIOS</a>
+    <a href="misMascotas.php">ir a mis mascotas</a>
     <div>
     </div>
     <footer>
