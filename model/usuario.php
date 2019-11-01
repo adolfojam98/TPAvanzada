@@ -124,7 +124,7 @@
     //areglo de extensiones validas
     $archivos_disp_ar = array('jpg', 'jpeg', 'gif', 'png', 'tif', 'tiff', 'bmp');
      //Valida si hubo una insercion de foto     
-    if(isset($_FILES['FotoPerfil'])){
+     if(isset($_FILES['fotoPerfil'])){
           //saca el nombre de la foto
           $nombreFotoPerfil = $_FILES["fotoPerfil"]["name"];
          
