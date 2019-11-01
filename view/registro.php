@@ -25,20 +25,62 @@
     <title>Register</title>
 
 <!-- TODO: hacer el style de registro -->
-
+    <link href="css/styles.css" rel = "stylesheet" type="text/css"><!--Estilo-->
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  <!-- Iconos -->
   </head>
   <body>
-
-  <form action="../controller/registroController.php" method="post" enctype ="multipart/form-data" >
-  
-  <input type="text" name="nombre" id="nombre" placeholder="Ingrese nombre">
-  <input type="text" name="apellido" id="apellido" placeholder="Ingrese apellido">
-  <input type="text" name="usuario" id="usuario" placeholder="ingrese nombre de usuario">
-  <input type="password" name="contrasenia1" id="contrasenia1" placeholder="Ingrese contraseña"> 
-  <input type="password" name="contrasenia2" id="contrasenia2" placeholder="Ingrese nuevamente contraseña">
-  <input type="file" name="fotoPerfil" id="fotoPerfil">
-  <input type="submit" value="Enviar">
-
- </form>
+    <div class="container" align="center">
+    <div class="row">
+    <form class="col s12" action="../controller/registroController.php" method="post" enctype ="multipart/form-data">
+        <div class="row">
+          <div class="input-field col s6">
+            <input name="nombre" id="first_name" type="text" class="validate">
+            <label for="first_name">Nombre</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="last_name" name="apellido" type="text" class="validate">
+            <label for="last_name">Apellido</label>
+          </div>
+        </div> 
+        <div class="row">
+          <div class="input-field col s6">
+            <input name="usuario" id="first_name2" type="text" class="validate">
+            <label for="first_name">Usuario</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="password" name="contrasenia1" type="password" class="validate">
+            <label for="last_name">Contraseña</label>
+          </div> 
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="password2" name="contrasenia2" type="password" class="validate">
+            <label for="last_name">Repita la contraseña</label>
+          </div>
+          <div class="input-field col s6">
+            <div class="file-field input-field">
+              <div class="btn">
+                <span>Archivo</span>
+                <input type="file" name="fotoPerfil" id="fotoPerfil">
+              </div>
+              <div class="file-path-wrapper">
+                <input placeholder="Imagen de perfil" class="file-path validate" type="text">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div align="center" class="col s12">
+            <button class="btn waves-effect waves-light" type="submit" name="action">Enviar</button>
+          </div>
+        </div>
+      </form>
+  </div>
+      
+    </div>
   </body>
 </html>

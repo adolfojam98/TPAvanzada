@@ -16,9 +16,7 @@
       // El metodo salvar sirve para escapar cualquier comillas doble o simple 
       //y otros caracteres que pueden vulnerar nuestra consulta SQL
       $user  = parent::salvar($user);
-      $clave = parent::salvar($clave);
-
-      
+      $clave = parent::salvar($clave);      
 
 
       // traemos el id y el nombre de la tabla usuarios donde el usuario sea igual al usuario ingresado y ademas la clave sea igual a la ingresada para ese usuario.
