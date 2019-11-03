@@ -20,7 +20,7 @@
 
 
       // traemos el id y el nombre de la tabla usuarios donde el usuario sea igual al usuario ingresado y ademas la clave sea igual a la ingresada para ese usuario.
-      $consulta = 'select id, nombre, apellido, usuario  from usuario where usuario="'.$user.'" and contrasenia= MD5("'.$clave.'")';
+      $consulta = 'select id, nombre, apellido, usuario,fotoPerfil from usuario where usuario="'.$user.'" and contrasenia= MD5("'.$clave.'")';
      
       //retorna el numero de filas afectadas
       $verificar_usuario = parent::verificarRegistros($consulta);
@@ -43,8 +43,7 @@
         $_SESSION['nombre']   = $user['nombre'];
         $_SESSION["apellido"] = $user['apellido'];
         $_SESSION['user']     = $user['usuario'];
-        $_SESSION['validate'] = true;
-
+        $_SESSION['fotoPerfil'] = $user['fotoPerfil'];
        
        
 
@@ -114,9 +113,65 @@
       parent::cerrar();
     }
 
-   
+ 
+ 
+ 
+    public function actualizarUsuario($n,$a){
+    parent::conectar();
+    session_start();
+    $nombre = parent::filtrar($n);
+    $apellido = parent::filtrar($a);
+    
+    if(!empty($nombre)){
+      $consulta = 'UPDATE usuario SET nombre="'.$nombre.'" WHERE id='.$_SESSION["id"];
+      parent::query($consulta); 
+    }
+    if(!empty($apellido)){
+      $consulta = 'UPDATE usuario SET apellido="'.$apellido.'" WHERE id='.$_SESSION["id"];
+      parent::query($consulta);
+    }
+    
+  
+        
+    if(!($_FILES['actualizarFoto']['name'] == null)){
+      $archivos_disp_ar = array('jpg', 'jpeg', 'gif', 'png', 'tif', 'tiff', 'bmp');
 
+         //saca el nombre de la foto
+         $nombreFotoPerfil = $_FILES["actualizarFoto"]["name"];
+        
+         //saca la extension
+         $nombreFotoPerfil = explode('.',$nombreFotoPerfil);
+         $cuenta_arr_nombre = count($nombreFotoPerfil);
+         $extension = strtolower($nombreFotoPerfil[--$cuenta_arr_nombre]);
+        
+         
+         //Validamos la extension
+         if(!in_array($extension, $archivos_disp_ar)){
+         }else{
+          //TODO: "El archivo subido no es valido";
+          }
+
+          //saca donde esta almacenado temporalmente
+         $archivo = $_FILES['actualizarFoto']['tmp_name'];
+         //Generamos la ruta en donde se almacena
+         $rutaFoto = '../view/imagenes/fotoPerfiles';
+     
+         $rutaFoto = $rutaFoto .'/'. $_SESSION["user"] . '_foto.' . $extension;
+         move_uploaded_file($archivo,$rutaFoto); 
+         
+         $consulta = 'UPDATE usuario SET fotoPerfil ="'.$rutaFoto.'" where id='.$_SESSION["id"];
+          parent::query($consulta);
+          $_SESSION["fotoPerfil"] = $rutaFoto;
+         parent::cerrar();
+        }
+        header("Location:../view/inicio.php");
+  } 
+
+  
   }
+
+
+
 
   function validarFoto($email){
     //areglo de extensiones validas

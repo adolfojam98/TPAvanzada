@@ -1,11 +1,9 @@
 <?php
   session_start();
-  $_SESSION["captcha"] = false;
-  if(isset($_SESSION["validate"])){
-    if($_SESSION["validate"]== true){
-        header("Location:inicio.php");
-    }
+  if(isset($_SESSION["id"])){
+    header("Location:inicio.php");
   }
+  
 ?>
 
 <!DOCTYPE html>

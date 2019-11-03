@@ -1,5 +1,12 @@
 
-<!-- TODO: ver si se puede hacer linda la tabla y que al apretar un boton te redirija a otra tabla manteniendo el id del usuario -->
+<?php
+session_start();
+if(!isset($_SESSION["id"])){
+    header("Location:login.php");
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

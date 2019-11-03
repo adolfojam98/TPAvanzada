@@ -65,8 +65,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `nombre`, `apellido`, `usuario`, `contrasenia`, `fotoPerfil`) VALUES
-(41, 'fcyt', 'uader', 'fcytuader', '3bccc90aa05755f993fe5db36e07c2f6', '../view/imagenes/user-default.png'),
-(42, 'adolfo', 'martinez', 'adolfojam98', '10b6fcf55b9ec53ea7717aa5c11dfa39', '../view/imagenes/user-default.png');
+(41, 'fcyt', 'uader', 'fcytuader', '3bccc90aa05755f993fe5db36e07c2f6', '../view/imagenes/user-default.jpg'),
+(42, 'adolfo', 'martinez', 'adolfojam98', '10b6fcf55b9ec53ea7717aa5c11dfa39', '../view/imagenes/user-default.jpg');
 
 -- --------------------------------------------------------
 

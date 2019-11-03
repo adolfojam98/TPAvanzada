@@ -1,13 +1,9 @@
 <?php
     session_start();
 
-    if(isset($_SESSION["validate"])){
-        if($_SESSION["validate"] == false){
-            header("Location:login.php");
-        }
-    }else{
+    if(!isset($_SESSION["id"])){
         header("Location:login.php");
-    } 
+    }
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +30,7 @@
         <ul class="right">
             <li><a href="tablaUsuarios.php">Ver usuarios</a></li>
             <li><a href="misMascotas.php">Ver mis mascotas</a></li>
-            <li><a href="#">Editar perfil</a></li>
+            <li><a href="ActualizarPerfil.php">Editar perfil</a></li>
             <li><a href="../controller/cerrarSesion.php">Cerrar sesión</a></li>
         </ul>
     </div>
@@ -42,7 +38,7 @@
 </div>
     <div class="container">
         <div id="img-usuario">
-            
+            <img src="<?php echo $_SESSION["fotoPerfil"];  ?>" alt="">
         </div>
 
     </div>
