@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-11-2019 a las 04:41:08
+-- Tiempo de generación: 01-11-2019 a las 20:37:48
 -- Versión del servidor: 10.4.6-MariaDB
 -- Versión de PHP: 7.3.9
 
@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `bddtp`
 --
+CREATE DATABASE IF NOT EXISTS `bddtp` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
+USE `bddtp`;
 
 -- --------------------------------------------------------
 
@@ -123,7 +125,7 @@ ALTER TABLE `mascota`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- Restricciones para tablas volcadas
@@ -140,6 +142,7 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
 
 /*Usuario*/
 GRANT SELECT, INSERT, UPDATE, DELETE, FILE ON *.* TO 'fcyt'@'localhost' IDENTIFIED BY PASSWORD '*D00D40028D062E98232FDC7E9E380E1D5783D07F';

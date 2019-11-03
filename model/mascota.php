@@ -4,8 +4,6 @@ require_once('conexion.php');
 
   class Mascota extends Conexion
   {
-
-    
  
    //Registro nueva mascota
     public function altaMascota($nombreM,$idDuenoM)
@@ -14,9 +12,7 @@ require_once('conexion.php');
       //filtramos las variables para agrear a la bdd
       $nombre   = parent::filtrar($nombreM);
       $idDueno = parent::filtrar($idDuenoM);
-     
-      
-      
+   
           $rutaFoto = validarFoto($idDueno,$nombre);
          
             

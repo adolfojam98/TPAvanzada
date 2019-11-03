@@ -147,7 +147,7 @@
           move_uploaded_file($archivo,$rutaFoto); 
           }else{
             //Asigna el valor por defecto de foto del usuario
-            $rutaFoto = '../view/imagenes/user-default.png';
+            $rutaFoto = '../view/imagenes/user-default.jpg';
             
           }
 

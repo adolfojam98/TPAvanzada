@@ -5,8 +5,9 @@
   $usuario       = $_POST["usuario"];
   $contrasenia1  = $_POST["contrasenia1"];
   $contrasenia2  = $_POST["contrasenia2"];
-
-
+ // $fotoPerfil = $_POST["imgPerfil"];
+//creo que esto tiene que ir ahí para que tome la imagen, si no nunca la recibe, 
+//igual lo comento porque no es mi área 
    
     
 

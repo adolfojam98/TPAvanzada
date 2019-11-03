@@ -17,35 +17,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>incio</title>
+    <title>Incio</title>
     <link href="css/styles.css" rel="stylesheet" type="text/css">
+      <!-- Compiled and minified CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  <!-- Iconos -->
 </head>
 
-<body background="imagenes/fondo.jpg">
-    <header>
-        <?php
-            require "html/header.html"; //Esto es para que te aparezca la fotito de arriba, llama al script header.php
-        ?>
-    </header>
-    <p align="center" class="texto">
-        BIENVENIDO/A <?php echo $_SESSION["user"]; ?>
-    </p>
-    <hr width="50%" align="center" color="#2B726C" size="3px">
-    <div id="correcto">
-        <img src="imagenes/correcto.png" width="300" height="300" class="imgC" />
+<body background="imagenes/fondo2.jpg">
+<div class="navbar-fixed">
+<nav>
+    <div class="nav-wrapper container">
+        <a href="inicio.php" class="brand-logo">Bienvenido/a <?php echo $_SESSION["nombre"]; ?></a>
+        <ul class="right">
+            <li><a href="tablaUsuarios.php">Ver usuarios</a></li>
+            <li><a href="misMascotas.php">Ver mis mascotas</a></li>
+            <li><a href="#">Editar perfil</a></li>
+            <li><a href="../controller/cerrarSesion.php">Cerrar sesión</a></li>
+        </ul>
     </div>
-    <div id="div-boton" align="center">
-        <input type="submit" value="Cerrar sesión" onclick="location.href='../controller/cerrarSesion.php'">
+</nav>
+</div>
+    <div class="container">
+        <div id="img-usuario">
+            <img src="imagenes/correcto.png" width="300" height="300" class="imgC" />
+        </div>
+
     </div>
-    <!-- TODO: hacer lindo este link -->
-    <a href="tablaUsuarios.php">IR A USUARIOS</a>
-    <a href="misMascotas.php">ir a mis mascotas</a>
-    <div>
-    </div>
-    <footer>
-        <?php
-            require "html/footer.html"; //Esto es para llamar a la fotito de abajo
-        ?>
-    </footer>
 </body>
 </html>
