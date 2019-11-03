@@ -26,7 +26,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  <!-- Iconos -->
 </head>
 
-<body background="imagenes/fondo2.jpg">
+<body>
 <div class="navbar-fixed">
 <nav>
     <div class="nav-wrapper container">
@@ -42,7 +42,7 @@
 </div>
     <div class="container">
         <div id="img-usuario">
-            <img src="imagenes/correcto.png" width="300" height="300" class="imgC" />
+            
         </div>
 
     </div>
