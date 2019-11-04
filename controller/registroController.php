@@ -11,15 +11,13 @@
    
     
 
+//nunca van a estar vacios porque le puse required, o sea no lo deja mandar hasta que esten todos los campos completos
   //si alguno de los campos esta vacio
-  if(empty($usuario) || empty($contrasenia1) || empty($contrasenia2))
-  {
+  /*if(empty($usuario) || empty($contrasenia1) || empty($contrasenia2))
+  { 
 
-    //TODO: indicar que algun/os de los campos estn vacios
+  }else{*/
     
-
-  }else{
-
     if($contrasenia1 === $contrasenia2){
 
          # Incluimos la clase usuario
@@ -30,19 +28,18 @@
 
         # Llamamos al metodo login para validar los datos en la base de datos
         $user -> registroUsuario($name, $apellido,$usuario,$contrasenia1);
-
         header("../view/incio.php");
-     
 
     }else{
-     // TODO: "indicar que las contraseñas ingresadas no coinciden";
+      require_once("../view/inicioFail.php");
+      errorContrasenias();
     }
 
-  }
+  //}
 
 
 
 
-// ?>
+ ?>
 
 

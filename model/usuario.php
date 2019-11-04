@@ -81,9 +81,12 @@
       
       $verificarCorreo = parent::verificarRegistros($consulta);
 
+      
 
       if($verificarCorreo > 0){
       // TODO: "indicar que el correo que quiere registrar ya existe";
+      require('../view/inicioFail.php');
+      errorUsuario();
         
       }else{
             // $a=0;
@@ -125,13 +128,12 @@
     if(!empty($nombre)){
       $consulta = 'UPDATE usuario SET nombre="'.$nombre.'" WHERE id='.$_SESSION["id"];
       parent::query($consulta); 
+      $_SESSION["nombre"] = $nombre;
     }
     if(!empty($apellido)){
       $consulta = 'UPDATE usuario SET apellido="'.$apellido.'" WHERE id='.$_SESSION["id"];
       parent::query($consulta);
     }
-    
-  
         
     if(!($_FILES['actualizarFoto']['name'] == null)){
       $archivos_disp_ar = array('jpg', 'jpeg', 'gif', 'png', 'tif', 'tiff', 'bmp');
@@ -146,9 +148,11 @@
         
          
          //Validamos la extension
-         if(!in_array($extension, $archivos_disp_ar)){
+         if(!(in_array($extension, $archivos_disp_ar))){
          }else{
           //TODO: "El archivo subido no es valido";
+          require("../view/inicioFail.php");
+          archivoInvalido();
           }
 
           //saca donde esta almacenado temporalmente
@@ -166,7 +170,7 @@
         }
         header("Location:../view/inicio.php");
   } 
-
+  
   
   }
 
@@ -188,9 +192,11 @@
          
           
           //Validamos la extension
-          if(!in_array($extension, $archivos_disp_ar)){
+          if(!(in_array($extension, $archivos_disp_ar))){
           }else{
            //TODO: "El archivo subido no es valido";
+           require("../view/inicioFail.php");
+           archivoInvalido();
            }
 
            //saca donde esta almacenado temporalmente

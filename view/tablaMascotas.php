@@ -27,19 +27,19 @@ header("Location:login.php");
     $nom = $_GET["nombre"];
     ?>
 <div class="navbar-fixed">
-<nav>
+<nav class="light-green darken-3">
     <div class="nav-wrapper container">
         <a href="tablaMascotas.php" class="brand-logo">Mascotas de <?php echo $nom; ?></a>
         <ul class="right">
             <li><a href="tablaUsuarios.php">Ver usuarios</a></li>
             <li><a href="misMascotas.php">Ver mis mascotas</a></li>
-            <li><a href="#">Editar perfil</a></li>
+            <li><a href="ActualizarPerfil.php">Editar perfil</a></li>
             <li><a href="../controller/cerrarSesion.php">Cerrar sesión</a></li>
         </ul>
     </div>
 </nav>
 <div id="div-boton">
-<a class="btn-floating btn-large" href="inicio.php" title="Volver"><i class="material-icons">navigate_before</i></a>
+<a class="btn-floating btn-large lime" href="tablaUsuarios.php" title="Volver"><i class="material-icons">navigate_before</i></a>
 </div>
 </div>
 <div id="div-contenido">
@@ -63,8 +63,6 @@ header("Location:login.php");
     <?php } ?>
 </div>
 
-      <a class="btn waves-effect waves-light" href="tablaUsuarios.php">Volver</a>
-    </div>
 </body>
 </html>
 

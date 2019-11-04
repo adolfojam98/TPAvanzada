@@ -27,23 +27,23 @@ if(!isset($_SESSION["id"])){
 </head>
 <body>
 <div class="navbar-fixed">
-<nav>
+<nav class="light-green darken-3">
     <div class="nav-wrapper container">
         <a href="misMascotas.php" class="brand-logo">Mis mascotas</a>
         <ul class="right">
             <li><a href="tablaUsuarios.php">Ver usuarios</a></li>
             <li><a href="misMascotas.php">Ver mis mascotas</a></li>
-            <li><a href="#">Editar perfil</a></li>
+            <li><a href="ActualizarPerfil.php">Editar perfil</a></li>
             <li><a href="../controller/cerrarSesion.php">Cerrar sesión</a></li>
         </ul>
     </div>
 </nav>
 </div>
 <div id="div-boton">
-<a class="btn-floating btn-large modal-trigger" href="#idModal" title="Agregar una nueva mascota"><i class="material-icons">add</i></a>
+<a class="btn-floating btn-large modal-trigger lime" href="#idModal" title="Agregar una nueva mascota"><i class="material-icons">add</i></a>
 </div>
 <div id="div-boton2">
-<a class="btn-floating btn-large" href="inicio.php" title="Volver"><i class="material-icons">navigate_before</i></a>
+<a class="btn-floating btn-large lime" href="inicio.php" title="Volver"><i class="material-icons">navigate_before</i></a>
 </div>
 <div id="div-contenido">
     <div class="row">
@@ -61,8 +61,8 @@ if(!isset($_SESSION["id"])){
           <h4><?php echo $valor['nombre_mascota'] ?></h4>
         </div>
         <div class="card-action">
-            <a class="btn-floating" title="Modificar" href="../controller/modificarMascota.php?idMascota=<?php echo $valor['id_mascota'];?>"><i class="material-icons">edit</i></a>
-            <a class="btn-floating" title="Eliminar" href="../controller/bajarMascota.php?idMascota=<?php echo $valor['id_mascota'];?>"><i class="material-icons">delete</i></a>
+            <a class="btn-floating lime" title="Modificar" href="../controller/modificarMascota.php?idMascota=<?php echo $valor['id_mascota'];?>"><i class="material-icons">edit</i></a>
+            <a class="btn-floating lime" title="Eliminar" href="../controller/bajarMascota.php?idMascota=<?php echo $valor['id_mascota'];?>"><i class="material-icons">delete</i></a>
             <!-- location.('mostrarMascotas.php?id_usuario="" -->
             <!-- Arma el link para qeu pase los parametros por el metodo -->
         </div>
@@ -75,7 +75,7 @@ if(!isset($_SESSION["id"])){
             <form action="../controller/agregarMascota.php" method="post" enctype ="multipart/form-data">
                 <input type="text" name="nombre_mascota" id="nombre_mascota" placeholder="Ingrese nombre de su mascota">
                 <div class="file-field input-field">
-                    <div class="btn">
+                    <div class="btn light-green darken-3">
                         <span>Archivo</span>
                         <input type="file" name="fotoMascota" id="fotoMascota">
                     </div>
@@ -84,7 +84,7 @@ if(!isset($_SESSION["id"])){
                     </div>
                 </div>
                 <div align="center">
-                    <button class="btn waves-effect waves-light" type="submit" value="enviar" name="action">Aceptar</button>
+                    <button class="btn waves-effect waves-light light-green darken-3" type="submit" value="enviar" name="action">Aceptar</button>
                 </div>
             </form>
         </div>

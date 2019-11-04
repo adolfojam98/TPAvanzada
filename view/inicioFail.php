@@ -24,12 +24,12 @@ if(isset($_SESSION["id"])){
 <body>
 
 <script type="text/javascript"> 
-			function alerta(texto){
+			function alerta(opcion, titulo, texto){
 				swal({
-  					title: "Error",
+  					title: titulo,
   					text: texto,
-  					type: "error",
-  					icon: "error",
+  					type: opcion,
+  					icon: opcion,
   					confirmButtonText: "Aceptar",
   					allowOutsideClick: true
 				}).then(function(){
@@ -43,13 +43,30 @@ if(isset($_SESSION["id"])){
 </html>
 
 <?php
+
+function errorContrasenias(){
+	echo "<script> alerta('error', 'Error', 'Las contraseñas no coinciden');</script>";
+}
+
+/*function cambiosExitosos(){
+	echo "<script> alerta('success', 'Excelente', 'Los cambios se han realizado con éxito');</script>";
+}*/
+
+function archivoInvalido(){
+	echo "<script> alerta('error', 'Error', 'El archivo ingresado no es válido');</script>";
+}
+
+function errorUsuario(){
+	echo "<script>alerta('El usuario ya se encuentra registrado');</script>";
+}
+
 if($_SESSION["error"] == "incorrecto"){
-	echo "<script> alerta('Usuario y/o contraseña incorrectos');</script>";
+	echo "<script> alerta('error', 'Error', 'Usuario y/o contraseña incorrectos');</script>";
 }
 elseif($_SESSION["error"] == "malEntrada"){
-    echo "<script> alerta('Los datos solo pueden contener letras y/o números');</script>";
+    echo "<script> alerta('error', 'Error', 'Los datos solo pueden contener letras y/o números');</script>";
 }elseif($_SESSION["error"] == "malCaptcha"){
-    echo "<script>alerta('Debe validar el captcha');</script>";
+    echo "<script>alerta('error', 'Error', 'Debe validar el captcha');</script>";
 }
 
 

@@ -1,0 +1,75 @@
+---Consulta 1---
+select employees.first_name as Nombre, employees.last_name as Apellido, employees.job_title as Cargo
+from employees where employees.id = (select orders.employee_id from orders where ship_name like '%Rodman%' group by employee_id)
+
+---Consulta 2---
+
+select customers.first_name as Nombre, customers.last_name as Apellido from customers inner join orders on customers.id = orders.customer_id and orders.order_date between '20060501' and '20060531'
+
+---Consulta 3---
+select products.product_name as Nombre, MONTH(orders.order_date) as Mes , SUM(products.list_price) as cantidad 
+from products inner join order_details on products.id = order_details.product_id inner join orders on order_details.order_id = orders.id group by products.product_name,MONTH(orders.order_date) 
+
+---Consulta 4---
+
+select products.product_name, products.list_price, products.quantity_per_unit 
+from products 
+where products.category = 'Cereal' or products.category = 'Soups' or products.category = 'Sauces'
+
+---Consulta 5---
+
+select customers.city from customers group by customers.city
+
+---Consulta 6---
+
+select products.category as categoria, count(*) as cantidad
+from products group by products.category
+
+---Consulta 7---
+
+select products.category as categoria, AVG(products.list_price) from products where products.category = 'Cereal' group by products.category
+
+---Consulta 8---
+
+select customers.first_name, count(*) as cantidad from customers inner join orders on customers.id = orders.customer_id and customers.first_name like 'A%' group by customers.first_name
+
+---Consulta 9---
+
+select top 10 employees.first_name, employees.last_name 
+from employees 
+inner join orders on employees.id = orders.employee_id 
+inner join customers on customers.id = orders.customer_id 
+order by customers.first_name, customers.last_name 
+
+---Consulta 10---
+
+select * from products where quantity_per_unit like '%bottles%' order by list_price desc
+
+---Consulta 11---
+
+select suppliers.first_name as Nombre, suppliers.last_name as Apellido, products.category as Categoria 
+from suppliers inner join products 
+on suppliers.id = products.supplier_ids 
+group by suppliers.first_name,suppliers.last_name ,products.category
+
+---Consulta 12---
+
+select products.product_name as Producto, (sum(inventory_transactions.quantity))*products.list_price as total  from inventory_transactions 
+inner join products 
+on inventory_transactions.product_id = products.id 
+group by products.product_name,products.list_price
+
+---Consulta 13---
+
+select suppliers.first_name as Nombre, suppliers.last_name as Apellido, suppliers.mobile_phone as Telefono, products.product_name as Nombre_Producto, products.list_price as Precio, inventory_transactions.quantity as cantidad 
+from products inner join suppliers 
+on products.supplier_ids = suppliers.id inner join inventory_transactions 
+on products.id = inventory_transactions.product_id and inventory_transactions.quantity < 20
+group by suppliers.first_name, suppliers.last_name,suppliers.mobile_phone,products.product_name,products.list_price,inventory_transactions.quantity
+
+---Consulta 14---
+
+
+
+
+

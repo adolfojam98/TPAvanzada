@@ -24,7 +24,6 @@
     <meta charset="utf-8">
     <title>Registro</title>
 
-<!-- TODO: hacer el style de registro -->
     <link href="css/styles.css" rel = "stylesheet" type="text/css"><!--Estilo-->
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -39,23 +38,23 @@
       <div class="card-content"> 
       <form id="registro" action="../controller/registroController.php" method="post" enctype ="multipart/form-data">
           <div class="input-field col s12">
-            <input name="nombre" id="first_name" type="text" class="validate">
+            <input name="nombre" id="first_name" type="text" class="validate" required>
             <label for="first_name">Nombre</label>
           </div>
           <div class="input-field col s12">
-            <input id="last_name" name="apellido" type="text" class="validate">
+            <input id="last_name" name="apellido" type="text" class="validate" required>
             <label for="last_name">Apellido</label>
           </div>
           <div class="input-field col s12">
-            <input name="usuario" id="first_name2" type="text" class="validate">
+            <input name="usuario" id="first_name2" type="text" class="validate" required>
             <label for="first_name2">Usuario</label>
           </div>
           <div class="input-field col s12">
-            <input id="password" name="contrasenia1" type="password" class="validate">
+            <input id="password" name="contrasenia1" type="password" class="validate" required>
             <label for="password">Contraseña</label>
           </div> 
           <div class="input-field col s12">
-            <input id="password2" name="contrasenia2" type="password" class="validate">
+            <input id="password2" name="contrasenia2" type="password" class="validate" required>
             <label for="password2">Repita la contraseña</label>
           </div>
           <div class="input-field col s12">

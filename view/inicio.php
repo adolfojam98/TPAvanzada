@@ -24,7 +24,7 @@
 
 <body>
 <div class="navbar-fixed">
-<nav>
+<nav class="light-green darken-3">
     <div class="nav-wrapper container">
         <a href="inicio.php" class="brand-logo">Bienvenido/a <?php echo $_SESSION["nombre"]; ?></a>
         <ul class="right">
@@ -38,7 +38,7 @@
 </div>
     <div class="container">
         <div id="img-usuario">
-            <img src="<?php echo $_SESSION["fotoPerfil"];  ?>" alt="">
+            <img src="<?php echo $_SESSION["fotoPerfil"]; ?>" class="circle responsive-img" alt="">
         </div>
 
     </div>

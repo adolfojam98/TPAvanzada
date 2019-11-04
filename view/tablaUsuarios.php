@@ -23,19 +23,19 @@ if(!isset($_SESSION["id"])){
 </head>
 <body>
 <div class="navbar-fixed">
-<nav>
+<nav class="light-green darken-3">
     <div class="nav-wrapper container">
         <a href="tablaUsuarios.php" class="brand-logo">Usuarios</a>
         <ul class="right">
             <li><a href="tablaUsuarios.php">Ver usuarios</a></li>
             <li><a href="misMascotas.php">Ver mis mascotas</a></li>
-            <li><a href="#">Editar perfil</a></li>
+            <li><a href="ActualizarPerfil.php">Editar perfil</a></li>
             <li><a href="../controller/cerrarSesion.php">Cerrar sesión</a></li>
         </ul>
     </div>
 </nav>
 <div id="div-boton2">
-<a class="btn-floating btn-large" href="inicio.php" title="Volver"><i class="material-icons">navigate_before</i></a>
+<a class="btn-floating btn-large lime" href="inicio.php" title="Volver"><i class="material-icons">navigate_before</i></a>
 </div>
 </div>
 <div id="div-contenido">
@@ -65,7 +65,7 @@ if(!isset($_SESSION["id"])){
                 <?php $id = $valor["id"];
                       $nombre = $valor["nombre"];
                 ?>
-                <td><button class="btn waves-effect waves-light" type="button" value="Inicio" onclick="window.location = 'tablaMascotas.php?id=<?php echo $id?>&nombre=<?php echo $nombre;?>'">Ver</button></td>
+                <td><button class="btn waves-effect waves-light lime" type="button" value="Inicio" onclick="window.location = 'tablaMascotas.php?id=<?php echo $id?>&nombre=<?php echo $nombre;?>'">Ver</button></td>
           </tr>
           <?php } ?>
         </tbody>
