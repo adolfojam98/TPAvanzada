@@ -80,13 +80,15 @@
       $consulta = "select id from usuario where usuario= '".$email."'";
       
       $verificarCorreo = parent::verificarRegistros($consulta);
-
+       
       
 
       if($verificarCorreo > 0){
       // TODO: "indicar que el correo que quiere registrar ya existe";
-      require('../view/inicioFail.php');
+      $_SESSION["error"] = "";
+      require("../view/registroFail.php");
       errorUsuario();
+      
         
       }else{
             // $a=0;
@@ -149,11 +151,13 @@
          
          //Validamos la extension
          if(!(in_array($extension, $archivos_disp_ar))){
-         }else{
-          //TODO: "El archivo subido no es valido";
-          require("../view/inicioFail.php");
+          require("../view/registroFail.php");
           archivoInvalido();
-          }
+          die();
+        }else{
+          //TODO: "El archivo subido no es valido";
+         
+          
 
           //saca donde esta almacenado temporalmente
          $archivo = $_FILES['actualizarFoto']['tmp_name'];
@@ -167,6 +171,7 @@
           parent::query($consulta);
           $_SESSION["fotoPerfil"] = $rutaFoto;
          parent::cerrar();
+        }
         }
         header("Location:../view/inicio.php");
   } 
@@ -193,11 +198,13 @@
           
           //Validamos la extension
           if(!(in_array($extension, $archivos_disp_ar))){
-          }else{
-           //TODO: "El archivo subido no es valido";
-           require("../view/inicioFail.php");
+          require("../view/registroFail.php");
            archivoInvalido();
-           }
+           die();
+          }else{
+           
+           
+           
 
            //saca donde esta almacenado temporalmente
           $archivo = $_FILES['fotoPerfil']['tmp_name'];
@@ -206,6 +213,7 @@
       
           $rutaFoto = $rutaFoto .'/'. $email . '_foto.' . $extension;
           move_uploaded_file($archivo,$rutaFoto); 
+          }
           }else{
             //Asigna el valor por defecto de foto del usuario
             $rutaFoto = '../view/imagenes/user-default.jpg';

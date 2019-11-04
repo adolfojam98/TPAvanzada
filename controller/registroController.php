@@ -22,7 +22,7 @@
 
          # Incluimos la clase usuario
         require_once('../model/usuario.php');
-
+        $_SESSION["error"] = "";
         # Creamos un objeto de la clase usuario
         $user = new Usuario();
 
@@ -31,7 +31,7 @@
         header("../view/incio.php");
 
     }else{
-      require_once("../view/inicioFail.php");
+      require_once("../view/registroFail.php");
       errorContrasenias();
     }
 

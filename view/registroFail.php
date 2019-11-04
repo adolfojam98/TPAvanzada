@@ -44,16 +44,18 @@ if(isset($_SESSION["id"])){
 
 <?php
 
-
-if($_SESSION["error"] == "incorrecto"){
-	echo "<script> alerta('error', 'Error', 'Usuario y/o contraseña incorrectos');</script>";
-}
-elseif($_SESSION["error"] == "malEntrada"){
-    echo "<script> alerta('error', 'Error', 'Los datos solo pueden contener letras y/o números');</script>";
-}elseif($_SESSION["error"] == "malCaptcha"){
-    echo "<script>alerta('error', 'Error', 'Debe validar el captcha');</script>";
+function errorContrasenias(){
+	echo "<script> alerta('error', 'Error', 'Las contraseñas no coinciden');</script>";
 }
 
+/*function cambiosExitosos(){
+	echo "<script> alerta('success', 'Excelente', 'Los cambios se han realizado con éxito');</script>";
+}*/
 
+function archivoInvalido(){
+	echo "<script> alerta('error', 'Error', 'El archivo ingresado no es válido');</script>";
+}
 
-?>
+function errorUsuario(){
+	echo "<script> alerta('error', 'Error', 'El usuario ya se encuentra registrado');</script>";
+}
