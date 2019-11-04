@@ -61,7 +61,7 @@ if(!isset($_SESSION["id"])){
           <h4><?php echo $valor['nombre_mascota'] ?></h4>
         </div>
         <div class="card-action">
-            <a class="btn-floating lime" title="Modificar" href="../controller/modificarMascota.php?idMascota=<?php echo $valor['id_mascota'];?>"><i class="material-icons">edit</i></a>
+            <a class="btn-floating lime" title="Modificar" href="actualizarMascota.php?idMascota=<?php echo $valor['id_mascota'];?>"><i class="material-icons">edit</i></a>
             <a class="btn-floating lime" title="Eliminar" href="../controller/bajarMascota.php?idMascota=<?php echo $valor['id_mascota'];?>"><i class="material-icons">delete</i></a>
             <!-- location.('mostrarMascotas.php?id_usuario="" -->
             <!-- Arma el link para qeu pase los parametros por el metodo -->
@@ -74,7 +74,7 @@ if(!isset($_SESSION["id"])){
     <!-- Seguramente tenga errores de logica porque no lo probe jijijiji -->
     <div id="idModal" class="modal">
         <div class="modal-content">
-            <form action="../controller/agregarMascota.php?valor=<?php echo $valor["nombre_mascota"]; ?>" method="post" enctype ="multipart/form-data">
+            <form action="../controller/agregarMascota.php" method="post" enctype ="multipart/form-data">
                 <input type="text" name="nombre_mascota" id="nombre_mascota" placeholder="Ingrese nombre de su mascota">
                 <div class="file-field input-field">
                     <div class="btn light-green darken-3">

@@ -67,26 +67,26 @@ public function bajaMascota($id){
 
 }
 
-public function actualizarMascota($n, $id){
+  public function actualizarMascota($n, $id){
     session_start();
     parent::conectar();
     $nombre_mascota = parent::filtrar($n);
     $id_mascota = parent::filtrar($id);
   
-  if(!empty($nombre_mascota)){
-    $consulta = 'UPDATE mascota SET nombre_mascota="'.$nombre_mascota.'" WHERE id='.$id_mascota;
-    parent::query($consulta); 
+    if(!empty($nombre_mascota)){
+      $consulta = 'UPDATe mascota SET nombre_mascota="'.$nombre_mascota.'" WHERE id='.$id_mascota;
+      parent::query($consulta); 
     
    
-  }else{
-    $consulta = 'SELECT nombre_mascota FROM mascota where id_mascota = '.$id_mascota;
-    $resultado = parent::consultaArreglo($consulta);
-    $nombre_mascota = $resultado('nombre_mascota');
-  }
+    }else{
+      $consulta = 'SELECt nombre_mascota FROM mascota where id_mascota = '.$id_mascota;
+      $resultado = parent::consultaArreglo($consulta);
+      $nombre_mascota = $resultado('nombre_mascota');
+    }
  
       
-  if(!($_FILES['actualizarFoto_mascota']['name'] == null)){
-    $archivos_disp_ar = array('jpg', 'jpeg', 'gif', 'png', 'tif', 'tiff', 'bmp');
+    if(!($_FILES['actualizarFoto_mascota']['name'] == null)){
+      $archivos_disp_ar = array('jpg', 'jpeg', 'gif', 'png', 'tif', 'tiff', 'bmp');
 
        //saca el nombre de la foto
        $nombreFotoPerfil = $_FILES["actualizarFoto_mascota"]["name"];
@@ -98,34 +98,26 @@ public function actualizarMascota($n, $id){
       
        
        //Validamos la extension
-       if(!(in_array($extension, $archivos_disp_ar))){
+      if(!(in_array($extension, $archivos_disp_ar))){
         require("../view/registroFail.php");
         archivoInvalido();
         die();
       }else{
        
-       
-        
-
         //saca donde esta almacenado temporalmente
-       $archivo = $_FILES['actualizarFoto_mascota']['tmp_name'];
-       //Generamos la ruta en donde se almacena
-       $rutaFoto = '../view/imagenes/fotoMascotas';
+        $archivo = $_FILES['actualizarFoto_mascota']['tmp_name'];
+        //Generamos la ruta en donde se almacena
+        $rutaFoto = '../view/imagenes/fotoMascotas';
    
-       $rutaFoto = $rutaFoto .'/'. $_SESSION["id"] . '_'.$nombre_mascota;
-       move_uploaded_file($archivo,$rutaFoto); 
-       
-       
-        
+        $rutaFoto = $rutaFoto .'/'. $_SESSION["id"] . '_'.$nombre_mascota;
+        move_uploaded_file($archivo,$rutaFoto); 
     
-       parent::cerrar();
+        parent::cerrar();
       }
-      }
-      header("Location:../view/misMascotas.php");
-
-}
-
+    }
+    header("Location:../view/misMascotas.php");
   }
+}
 
   function validarFoto($idDueno,$nombre){
     //areglo de extensiones validas
