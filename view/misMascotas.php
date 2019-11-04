@@ -72,9 +72,11 @@ if(!isset($_SESSION["id"])){
 <!-- TODO: "Tenes que pasar como parametros en el form: $_POST["mascota_nuevoNombre"] y por get $_GET["idMascota"] mandalo a ../controller/modificarMascota.php" -->
     <!-- ejemplo: <form action="../controller/agregarMascota.php?valor=<?php /* echo $valor["nombre_mascota"] */; ?>" method="post" enctype ="multipart/form-data"> -->
     <!-- Seguramente tenga errores de logica porque no lo probe jijijiji -->
+
+    <!-- Borré lo que le mandaste por get en esta ventana porque esta es la de agregar, no necesita ningún parámetro, y pasa todo por post-->
     <div id="idModal" class="modal">
         <div class="modal-content">
-            <form action="../controller/agregarMascota.php?valor=<?php echo $valor["nombre_mascota"]; ?>" method="post" enctype ="multipart/form-data">
+            <form action="../controller/agregarMascota.php" method="post" enctype ="multipart/form-data">
                 <input type="text" name="nombre_mascota" id="nombre_mascota" placeholder="Ingrese nombre de su mascota">
                 <div class="file-field input-field">
                     <div class="btn light-green darken-3">
