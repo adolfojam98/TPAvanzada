@@ -8,5 +8,4 @@ $mascota = new Mascota();
 $mascota->altaMascota($nombre,$id);
 
 
-
 ?>
