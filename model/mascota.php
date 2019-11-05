@@ -55,7 +55,10 @@ public function bajaMascota($id){
     parent::conectar();
     $consulta1 = 'delete from usuario_mascota where id_mascota ='.$id;
     $consulta2 = 'delete from mascota where id_mascota='.$id;
-
+    $consulta3 = 'SELECT foto_mascota FROM mascota WHERE id_mascota = '.$id;
+    $respuesta = parent::consultaArreglo($consulta3);
+    $rutaFoto = $respuesta["foto_mascota"];
+    unlink($rutaFoto);
     parent::query($consulta1);
     parent::query($consulta2);
 
