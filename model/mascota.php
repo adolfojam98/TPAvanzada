@@ -67,26 +67,33 @@ public function bajaMascota($id){
 
 }
 
-public function actualizarMascota($n, $id){
+  public function actualizarMascota($n, $id){
     session_start();
     parent::conectar();
     $nombre_mascota = parent::filtrar($n);
     $id_mascota = parent::filtrar($id);
   
-  if(!empty($nombre_mascota)){
-    $consulta = 'UPDATE mascota SET nombre_mascota="'.$nombre_mascota.'" WHERE id='.$id_mascota;
-    parent::query($consulta); 
+    if(!empty($nombre_mascota)){
+      $consulta = 'UPDATE mascota SET nombre_mascota = "'.$nombre_mascota.'" WHERE id_mascota='.$id_mascota;
+      
+    
+      parent::query($consulta); 
     
    
-  }else{
-    $consulta = 'SELECT nombre_mascota FROM mascota where id_mascota = '.$id_mascota;
-    $resultado = parent::consultaArreglo($consulta);
-    $nombre_mascota = $resultado('nombre_mascota');
-  }
+    }else{
+      $consulta = 'SELECT nombre_mascota FROM mascota where id_mascota = '.$id_mascota;
+      $resultado = parent::consultaArreglo($consulta);
+      //Por si no se cambia el nombre de la mascota
+      $nombre_mascota = $resultado['nombre_mascota'];
+    
+      
+    }
  
       
-  if(!($_FILES['actualizarFoto_mascota']['name'] == null)){
-    $archivos_disp_ar = array('jpg', 'jpeg', 'gif', 'png', 'tif', 'tiff', 'bmp');
+    if(!($_FILES['actualizarFoto_mascota']['name'] == null)){
+    
+     
+      $archivos_disp_ar = array('jpg', 'jpeg', 'gif', 'png', 'tif', 'tiff', 'bmp');
 
        //saca el nombre de la foto
        $nombreFotoPerfil = $_FILES["actualizarFoto_mascota"]["name"];
@@ -98,34 +105,54 @@ public function actualizarMascota($n, $id){
       
        
        //Validamos la extension
-       if(!(in_array($extension, $archivos_disp_ar))){
+      if(!(in_array($extension, $archivos_disp_ar))){
         require("../view/registroFail.php");
         archivoInvalido();
         die();
       }else{
-       
-       
-        
-
+        //////Borro la antigua foto/////////
+        //consulto la ruta de la foto
+        $consulta = 'SELECT foto_mascota FROM mascota WHERE id_mascota = '.$id_mascota;
+        $respuesta = parent::consultaArreglo($consulta);
+        $ruta = $respuesta["foto_mascota"];
+        //Borra la foto
+        unlink($ruta);
+     
         //saca donde esta almacenado temporalmente
-       $archivo = $_FILES['actualizarFoto_mascota']['tmp_name'];
-       //Generamos la ruta en donde se almacena
-       $rutaFoto = '../view/imagenes/fotoMascotas';
-   
-       $rutaFoto = $rutaFoto .'/'. $_SESSION["id"] . '_'.$nombre_mascota;
-       move_uploaded_file($archivo,$rutaFoto); 
-       
-       
+        $archivo = $_FILES['actualizarFoto_mascota']['tmp_name'];
+        //Generamos la ruta en donde se almacena
+        $rutaFoto = '../view/imagenes/fotoMascotas';
+        $rutaFoto = $rutaFoto .'/'. $_SESSION["id"] . '_'.$nombre_mascota.'.'.$extension;
+        $consulta = 'UPDATE mascota SET foto_mascota = "'.$rutaFoto.'" WHERE id_mascota = '. $id_mascota;
+        parent::query($consulta);
+        move_uploaded_file($archivo,$rutaFoto); 
         
     
-       parent::cerrar();
+        
       }
-      }
-      header("Location:../view/misMascotas.php");
-
-}
-
+    }else{
+      //Esto es para que cuando se cambie el nombre de la mascota se cambie la ruta de la foto
+      //consultamos la ruta antigua
+      $consulta = 'SELECT foto_mascota FROM mascota WHERE id_mascota = '.$id_mascota;
+      $resultado = parent::consultaArreglo($consulta);
+      $rutaFotoOld = $resultado["foto_mascota"];
+      
+       //Sacamos la extension
+       $rutaTlantica = explode('.',$rutaFotoOld);
+       $cuenta_arr_nombre = count($rutaTlantica);
+       $extension = strtolower($rutaTlantica[--$cuenta_arr_nombre]);
+      //armamos la ruta nueva
+       $rutaFotoNew = '../view/imagenes/fotoMascotas/'.$_SESSION["id"].'_'.$nombre_mascota.'.'.$extension;
+       //renombramos la ruta
+       rename($rutaFotoOld,$rutaFotoNew);
+       //almacenamos la nueva ruta en la base de datos
+       $consulta = 'UPDATE mascota SET foto_mascota = "'.$rutaFotoNew .'" WHERE id_mascota ='.$id_mascota;
+        parent::query($consulta);
+    }
+    parent::cerrar();
+    header("Location:../view/misMascotas.php");
   }
+}
 
   function validarFoto($idDueno,$nombre){
     //areglo de extensiones validas
